@@ -46,6 +46,7 @@
 import MovieGrid from './MovieGrid'
 import { mapGetters } from 'vuex'
 import { EventBus } from '../event-bus'
+import FilterEvent from '../events/FilterEvent'
 
 export default {
   name: 'Home',
@@ -57,10 +58,10 @@ export default {
   },
   methods: {
     ratingFilter: (rating) => {
-      EventBus.$emit('filterRating', parseFloat(rating))
+      EventBus.$emit(FilterEvent.FILTER_RATING, parseFloat(rating))
     },
     genreChanged: (genre) => {
-      EventBus.$emit('filterGenre', genre)
+      EventBus.$emit(FilterEvent.FILTER_GENRE, genre)
     }
   },
   computed: {
